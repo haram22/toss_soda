@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:toss/theme/colors.dart';
 import 'package:toss/theme/text_style.dart';
@@ -57,8 +59,8 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(left: 16.0, right: 16, top: 13),
-          child: Column(
-            children: [firstCard()],
+          child: ListView(
+            children: [firstCard(), secondCard(), thirdCard()],
           ),
         ));
   }
@@ -74,15 +76,191 @@ class firstCard extends StatefulWidget {
 class _firstCardState extends State<firstCard> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Card(
-          child: ListTile(title: Text('토스뱅크', style: title2())),
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      child: ListTile(
+          title: Padding(
+        padding: const EdgeInsets.only(left: 6.0, top: 19, bottom: 18),
+        child: Row(
+          children: [
+            Text('토스뱅크', style: title2()),
+            Spacer(),
+            IconButton(
+                padding: EdgeInsets.zero,
+                constraints: BoxConstraints(),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: 16,
+                ))
+          ],
         ),
-        Card(
-          child: ListTile(title: Text('자산', style: title2())),
+      )),
+    );
+  }
+}
+
+class secondCard extends StatefulWidget {
+  const secondCard({super.key});
+
+  @override
+  State<secondCard> createState() => _secondCardState();
+}
+
+class _secondCardState extends State<secondCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      // ignore: sort_child_properties_last
+      child: ListTile(
+          title: Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 19, bottom: 18, left: 6),
+                    child: Row(
+                      children: [
+                        Text('자산', style: title2()),
+                        Spacer(),
+                        IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: BoxConstraints(),
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.arrow_forward_ios_outlined,
+                              size: 16,
+                            ))
+                      ],
+                    ),
+                  ),
+                  banklist(
+                      image: 'tossbank',
+                      title: '토스뱅크 통장',
+                      money: '16,735',
+                      isbutton: true),
+                  banklist(
+                      image: 'wori',
+                      title: '우리뱅크월렛카카오통장\n(저축예금)',
+                      money: '74,000',
+                      isbutton: true),
+                  banklist(
+                      image: 'ibk',
+                      title: '토스뱅크 통장',
+                      money: '16,735',
+                      isbutton: true),
+                  banklist(
+                      image: 'kakao',
+                      title: '토스뱅크 통장',
+                      money: '16,735',
+                      isbutton: true),
+                  banklist(
+                      image: 'hana',
+                      title: '토스뱅크 통장',
+                      money: '16,735',
+                      isbutton: true),
+                  banklist(
+                      image: 'wori',
+                      title: '토스뱅크 통장',
+                      money: '16,735',
+                      isbutton: false),
+                  Divider(thickness: 1),
+                  banklist(
+                      image: 'point',
+                      title: '포인트 머니 2개',
+                      money: '2,500,000',
+                      isbutton: false),
+                  SizedBox(
+                    height: 20,
+                  )
+                ],
+              ))),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+    );
+  }
+}
+
+class thirdCard extends StatefulWidget {
+  const thirdCard({super.key});
+
+  @override
+  State<thirdCard> createState() => _thirdCardState();
+}
+
+class _thirdCardState extends State<thirdCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      child: ListTile(
+          title: Padding(
+              padding: const EdgeInsets.only(left: 6.0, top: 19, bottom: 18),
+              child: Column(
+                children: [
+                  Row(
+                    children: [Text('소비', style: title2()), Spacer()],
+                  ),
+                  SizedBox(height: 16),
+                  banklist(
+                      image: 'card',
+                      title: '이번 달 쓴 금액',
+                      money: '467,200',
+                      isbutton: true),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 20),
+                    child: Divider(
+                      thickness: 1,
+                    ),
+                  ),
+                  banklist(
+                      image: 'd_9',
+                      title: '7월 13일 낼 카드값',
+                      money: '1,200',
+                      isbutton: false),
+                ],
+              ))),
+    );
+  }
+}
+
+class banklist extends StatelessWidget {
+  final String image;
+  final String title;
+  final String money;
+  final bool isbutton;
+  const banklist(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.money,
+      required this.isbutton});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5.0),
+      child: ListTile(
+        trailing: isbutton
+            ? OutlinedButton(
+                onPressed: () {},
+                child: Text("송금", style: button1(color: Color(0xff505866))))
+            : null,
+        leading: Expanded(flex: 3, child: Image.asset('assets/$image.png')),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 1.0),
+          child: Text('$title', style: body3(color: Color(0xff505866))),
         ),
-      ],
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 1.0),
+          child: Text(
+            '${money} 원',
+            style: body1(color: Color(0xff353C49)),
+          ),
+        ),
+      ),
     );
   }
 }

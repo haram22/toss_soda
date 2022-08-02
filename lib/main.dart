@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: home_background,
         appBar: AppBar(
           title: Text(
-            "sss",
+            "sssas",
             style: TextStyle(color: Colors.black),
           ),
           leading: Padding(

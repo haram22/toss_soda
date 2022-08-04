@@ -383,7 +383,7 @@ class banklist extends StatelessWidget {
       child: Align(
         alignment: Alignment.topLeft,
         child: ListTile(
-          contentPadding: EdgeInsets.only(left: 5.0, right: 0.0),
+          contentPadding: EdgeInsets.only(left: 5.0, right: 5.0),
           trailing: isbutton
               ? SizedBox(
                   height: 37,

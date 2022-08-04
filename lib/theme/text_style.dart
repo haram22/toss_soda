@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 TextStyle title1({bool responsible = false, double? height, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 26.sp : 26,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.bold,
       fontFamily: 'Main',
       color: color,
       height: height);
@@ -13,7 +13,7 @@ TextStyle title1({bool responsible = false, double? height, Color? color}) {
 TextStyle title2({bool responsible = false, double? height, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 22.sp : 22,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       fontFamily: 'Main',
       color: color,
       height: height);
@@ -22,7 +22,7 @@ TextStyle title2({bool responsible = false, double? height, Color? color}) {
 TextStyle title3({bool responsible = false, double? height, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 20.sp : 20,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       fontFamily: 'Main',
       color: color,
       height: height);
@@ -31,7 +31,7 @@ TextStyle title3({bool responsible = false, double? height, Color? color}) {
 TextStyle subtitle1({bool responsible = false, double? height, Color? color}) {
   return TextStyle(
       fontSize: responsible ? 14.sp : 14,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       fontFamily: 'Main',
       color: color,
       height: height);

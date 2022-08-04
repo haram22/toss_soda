@@ -13,21 +13,18 @@ class _sendState extends State<send> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: AppBar(backgroundColor: Colors.white, elevation: 0),
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, right: 20),
         child: ListView(
           shrinkWrap: true,
           children: [
-            Text("어디로 돈을 보낼까요?", style: title1(color: Color(0xff1A1E27))),
-            SizedBox(height: 60),
+            Text("어디로 돈을 보낼까요?", style: title1(color: const Color(0xff1A1E27))),
+            const SizedBox(height: 60),
             send_grid(),
-            SizedBox(height: 35),
-            Text("증권사 선택", style: body3(color: Color(0xff4F5965))),
-            SizedBox(height: 16),
+            const SizedBox(height: 35),
+            Text("증권사 선택", style: body3(color: const Color(0xff4F5965))),
+            const SizedBox(height: 16),
             stock_grid()
           ],
         ),
@@ -116,7 +113,7 @@ class stock_grid extends StatelessWidget {
     'mirae',
     'kb',
     'kakaopay',
-    'instead',
+    'instead'
   ];
   List<String> name = [
     'NH투자',
@@ -160,10 +157,7 @@ class stock_grid extends StatelessWidget {
                               height: 36)),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 3.0, top: 2),
-                        child: Text(
-                          name[index],
-                          style: body3(),
-                        ),
+                        child: Text(name[index], style: body3()),
                       ),
                     ],
                   ),

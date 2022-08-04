@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
+// ignore_for_file: prefer_const_constructors, unnecessary_const, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:toss/theme/colors.dart';
 import 'package:toss/theme/text_style.dart';
@@ -13,12 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Toss',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: HomePage(),
-      color: home_background,
-    );
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+        color: home_background);
   }
 }
 
@@ -41,9 +37,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
+        body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
         bottomNavigationBar: Container(
             decoration: BoxDecoration(
                 border: Border.all(color: Color(0xff0FFEFEFEF)),
@@ -52,82 +46,68 @@ class _HomePageState extends State<HomePage> {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: BottomNavigationBar(
-                backgroundColor: Colors.white,
-                type: BottomNavigationBarType.fixed,
-                unselectedItemColor: bottom_navi_enable,
-                elevation: 5,
-                currentIndex: _selectedIndex,
-                onTap: (int index) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-                selectedLabelStyle: appbar(color: Color(0xff343D4C)),
-                unselectedLabelStyle: appbar(color: Color(0xff8D949C)),
-                iconSize: 20,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child: ImageIcon(
-                        AssetImage(
-                          'assets/home.png',
-                        ),
+                  backgroundColor: Colors.white,
+                  type: BottomNavigationBarType.fixed,
+                  unselectedItemColor: bottom_navi_enable,
+                  elevation: 5,
+                  currentIndex: _selectedIndex,
+                  onTap: (int index) {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  selectedLabelStyle: appbar(color: Color(0xff343D4C)),
+                  unselectedLabelStyle: appbar(color: Color(0xff8D949C)),
+                  iconSize: 20,
+                  items: [
+                    const BottomNavigationBarItem(
+                      icon: const Padding(
+                        padding: const EdgeInsets.only(bottom: 3.0, top: 10),
+                        child: const ImageIcon(AssetImage('assets/home.png')),
                       ),
+                      label: '홈',
                     ),
-                    label: '홈',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child: ImageIcon(
-                        AssetImage(
+                    const BottomNavigationBarItem(
+                      icon: const Padding(
+                        padding: const EdgeInsets.only(bottom: 3.0, top: 10),
+                        child: const ImageIcon(const AssetImage(
                           'assets/diamond.png',
+                        )),
+                      ),
+                      label: '혜택',
+                    ),
+                    const BottomNavigationBarItem(
+                      icon: const Padding(
+                        padding: const EdgeInsets.only(bottom: 3.0, top: 10),
+                        child:
+                            // Icon(
+                            //   Icons.card_membership_outlined,
+                            // ),
+                            const ImageIcon(
+                          const AssetImage('assets/Group14.png'),
                         ),
                       ),
+                      label: '송금',
                     ),
-                    label: '혜택',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child:
-                          // Icon(
-                          //   Icons.card_membership_outlined,
-                          // ),
-                          ImageIcon(
-                        AssetImage(
-                          'assets/Group14.png',
+                    const BottomNavigationBarItem(
+                      icon: const Padding(
+                        padding: const EdgeInsets.only(bottom: 3.0, top: 10),
+                        child: const ImageIcon(
+                          const AssetImage('assets/stock.png'),
                         ),
                       ),
+                      label: '주식',
                     ),
-                    label: '송금',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child: ImageIcon(
-                        AssetImage(
-                          'assets/stock.png',
+                    const BottomNavigationBarItem(
+                        icon: const Padding(
+                          padding: const EdgeInsets.only(bottom: 3.0, top: 10),
+                          child: const ImageIcon(
+                            const AssetImage('assets/list.png'),
+                          ),
                         ),
-                      ),
-                    ),
-                    label: '주식',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child: ImageIcon(
-                        AssetImage(
-                          'assets/list.png',
-                        ),
-                      ),
-                    ),
-                    label: '전체',
-                  ),
-                ],
-                selectedItemColor: text_primary_bottom_able,
-              ),
+                        label: '전체'),
+                  ],
+                  selectedItemColor: text_primary_bottom_able),
             )));
   }
 }
@@ -145,49 +125,48 @@ class _homeState extends State<home> {
     return Scaffold(
       backgroundColor: home_background,
       appBar: AppBar(
-        toolbarHeight: 39,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 13.0, top: 5),
-          child: Image.asset('assets/toss.png'),
-        ),
-        leadingWidth: 120,
-        backgroundColor: home_background,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 13.0, top: 5),
-            child: Row(children: [
-              Transform.scale(
-                  scale: 1.5,
-                  child: IconButton(
-                      onPressed: () {}, icon: Image.asset('assets/chat.png'))),
-              Transform.scale(
-                  scale: 1.5,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/notification.png')))
-            ]),
-          )
-        ],
-        elevation: 0,
-      ),
+          toolbarHeight: 39,
+          leading: Padding(
+              padding: const EdgeInsets.only(left: 13.0, top: 5),
+              child: Image.asset('assets/toss.png')),
+          leadingWidth: 120,
+          backgroundColor: home_background,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 13.0, top: 5),
+              child: Row(children: [
+                Transform.scale(
+                    scale: 1.5,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset('assets/chat.png'))),
+                Transform.scale(
+                    scale: 1.5,
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset('assets/notification.png')))
+              ]),
+            )
+          ],
+          elevation: 0),
       body: Padding(
         padding: const EdgeInsets.only(left: 16.0, right: 16, top: 17),
         child: ListView(children: [
-          firstCard(),
-          SizedBox(height: 5),
-          secondCard(),
-          SizedBox(height: 5),
-          thirdCard(),
-          lastCard(),
-          SizedBox(height: 33),
-          Center(
-              child: Text("금액 숨기기  |  자산 추가",
-                  style: TextStyle(
+          const firstCard(),
+          const SizedBox(height: 5),
+          const secondCard(),
+          const SizedBox(height: 5),
+          const thirdCard(),
+          const lastCard(),
+          const SizedBox(height: 33),
+          const Center(
+              child: const Text("금액 숨기기  |  자산 추가",
+                  style: const TextStyle(
                       fontFamily: 'Main',
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: toast_background))),
-          SizedBox(height: 78)
+          const SizedBox(height: 78)
         ]),
       ),
     );
@@ -242,7 +221,6 @@ class _secondCardState extends State<secondCard> {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      // ignore: sort_child_properties_last
       child: ListTile(
           title: Padding(
               padding: const EdgeInsets.only(top: 4),
@@ -262,10 +240,8 @@ class _secondCardState extends State<secondCard> {
                                   padding: EdgeInsets.zero,
                                   constraints: BoxConstraints(),
                                   onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_forward_ios_outlined,
-                                    size: 16,
-                                  ))
+                                  icon: Icon(Icons.arrow_forward_ios_outlined,
+                                      size: 16))
                             ],
                           ),
                         ],
@@ -315,9 +291,7 @@ class _secondCardState extends State<secondCard> {
                       money: '2,500,000',
                       isbutton: false,
                       buttonName: ''),
-                  SizedBox(
-                    height: 17,
-                  )
+                  SizedBox(height: 17)
                 ],
               ))),
     );
@@ -341,9 +315,8 @@ class _thirdCardState extends State<thirdCard> {
             title: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 6.0, top: 19),
-              child: Row(children: [Text('소비', style: title2()), Spacer()]),
-            ),
+                padding: const EdgeInsets.only(left: 6.0, top: 19),
+                child: Row(children: [Text('소비', style: title2()), Spacer()])),
             SizedBox(height: 16),
             Padding(
                 padding: const EdgeInsets.only(left: 5.0),
@@ -357,14 +330,13 @@ class _thirdCardState extends State<thirdCard> {
                 padding: const EdgeInsets.only(top: 3.0, bottom: 10, left: 5),
                 child: Divider(thickness: 1)),
             Padding(
-              padding: const EdgeInsets.only(left: 5.0),
-              child: banklist(
-                  image: 'd_9',
-                  title: '7월 13일 낼 카드값',
-                  money: '1,200',
-                  isbutton: false,
-                  buttonName: ''),
-            )
+                padding: const EdgeInsets.only(left: 5.0),
+                child: banklist(
+                    image: 'd_9',
+                    title: '7월 13일 낼 카드값',
+                    money: '1,200',
+                    isbutton: false,
+                    buttonName: ''))
           ],
         )));
   }
@@ -405,18 +377,15 @@ class banklist extends StatelessWidget {
                             MaterialPageRoute(builder: (context) => send()));
                       },
                       child: Text(buttonName,
-                          style: button1(color: Color(0xff505866)))),
-                )
+                          style: button1(color: Color(0xff505866)))))
               : null,
           leading: Image.asset('assets/$image.png'),
           title: Padding(
-            padding: const EdgeInsets.only(bottom: 1.0),
-            child: Text(title, style: body3(color: Color(0xff505866))),
-          ),
+              padding: const EdgeInsets.only(bottom: 1.0),
+              child: Text(title, style: body3(color: Color(0xff505866)))),
           subtitle: Padding(
-            padding: const EdgeInsets.only(top: 1.0),
-            child: Text('$money 원', style: body1(color: Color(0xff353C49))),
-          ),
+              padding: const EdgeInsets.only(top: 1.0),
+              child: Text('$money 원', style: body1(color: Color(0xff353C49)))),
         ),
       ),
     );
@@ -438,31 +407,24 @@ class lastCard extends StatelessWidget {
           Row(
             children: [
               _card(
-                title: '안전하게',
-                subtitle1: '신용점수s',
-                subtitle2: '보기',
-                image: 'score',
-                height: 43,
-              ),
+                  title: '안전하게',
+                  subtitle1: '신용점수s',
+                  subtitle2: '보기',
+                  image: 'score',
+                  height: 43),
               _card(
-                title: '최대 15만원',
-                subtitle1: '카드 혜택',
-                subtitle2: '받기',
-                image: 'purple_card',
-                height: 44,
-              ),
+                  title: '최대 15만원',
+                  subtitle1: '카드 혜택',
+                  subtitle2: '받기',
+                  image: 'purple_card',
+                  height: 44),
               _card(
-                title: '최근',
-                subtitle1: '만보기',
-                subtitle2: '',
-                image: 'shoe',
-                height: 50,
-              ),
-              _card(
-                title: '인기',
-                subtitle1: '더보기',
-                subtitle2: '',
-              )
+                  title: '최근',
+                  subtitle1: '만보기',
+                  subtitle2: '',
+                  image: 'shoe',
+                  height: 50),
+              _card(title: '인기', subtitle1: '더보기', subtitle2: '')
             ],
           )
         ],

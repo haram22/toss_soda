@@ -91,9 +91,13 @@ class _HomePageState extends State<HomePage> {
                   BottomNavigationBarItem(
                     icon: Padding(
                       padding: const EdgeInsets.only(bottom: 3.0, top: 10),
-                      child: ImageIcon(
+                      child:
+                          // Icon(
+                          //   Icons.card_membership_outlined,
+                          // ),
+                          ImageIcon(
                         AssetImage(
-                          'assets/money.png',
+                          'assets/Group14.png',
                         ),
                       ),
                     ),
@@ -143,20 +147,24 @@ class _homeState extends State<home> {
       appBar: AppBar(
         toolbarHeight: 39,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 13.0),
+          padding: const EdgeInsets.only(left: 13.0, top: 5),
           child: Image.asset('assets/toss.png'),
         ),
         leadingWidth: 120,
         backgroundColor: home_background,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 13.0),
+            padding: const EdgeInsets.only(right: 13.0, top: 5),
             child: Row(children: [
-              IconButton(
-                  onPressed: () {}, icon: Image.asset('assets/chat.png')),
-              IconButton(
-                  onPressed: () {},
-                  icon: Image.asset('assets/notification.png'))
+              Transform.scale(
+                  scale: 1.5,
+                  child: IconButton(
+                      onPressed: () {}, icon: Image.asset('assets/chat.png'))),
+              Transform.scale(
+                  scale: 1.5,
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('assets/notification.png')))
             ]),
           )
         ],

@@ -22,62 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class home extends StatefulWidget {
-  const home({super.key});
-
-  @override
-  State<home> createState() => _homeState();
-}
-
-class _homeState extends State<home> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: home_background,
-      appBar: AppBar(
-        toolbarHeight: 39,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 13.0),
-          child: Image.asset('assets/toss.png'),
-        ),
-        leadingWidth: 120,
-        backgroundColor: home_background,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 13.0),
-            child: Row(children: [
-              IconButton(
-                  onPressed: () {}, icon: Image.asset('assets/chat.png')),
-              IconButton(
-                  onPressed: () {},
-                  icon: Image.asset('assets/notification.png'))
-            ]),
-          )
-        ],
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 16, top: 17),
-        child: ListView(children: [
-          firstCard(),
-          secondCard(),
-          thirdCard(),
-          lastCard(),
-          SizedBox(height: 33),
-          Center(
-              child: Text("금액 숨기기  |  자산 추가",
-                  style: TextStyle(
-                      fontFamily: 'Main',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: toast_background))),
-          SizedBox(height: 78)
-        ]),
-      ),
-    );
-  }
-}
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -109,10 +53,10 @@ class _HomePageState extends State<HomePage> {
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: BottomNavigationBar(
                 backgroundColor: Colors.white,
-                type: BottomNavigationBarType.fixed, //아이템 4개 이상일 때 추가
+                type: BottomNavigationBarType.fixed,
                 unselectedItemColor: bottom_navi_enable,
                 elevation: 5,
-                currentIndex: _selectedIndex, //현재 선택된 Index
+                currentIndex: _selectedIndex,
                 onTap: (int index) {
                   setState(() {
                     _selectedIndex = index;
@@ -181,6 +125,64 @@ class _HomePageState extends State<HomePage> {
                 selectedItemColor: text_primary_bottom_able,
               ),
             )));
+  }
+}
+
+class home extends StatefulWidget {
+  const home({super.key});
+
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: home_background,
+      appBar: AppBar(
+        toolbarHeight: 39,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 13.0),
+          child: Image.asset('assets/toss.png'),
+        ),
+        leadingWidth: 120,
+        backgroundColor: home_background,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 13.0),
+            child: Row(children: [
+              IconButton(
+                  onPressed: () {}, icon: Image.asset('assets/chat.png')),
+              IconButton(
+                  onPressed: () {},
+                  icon: Image.asset('assets/notification.png'))
+            ]),
+          )
+        ],
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16.0, right: 16, top: 17),
+        child: ListView(children: [
+          firstCard(),
+          SizedBox(height: 5),
+          secondCard(),
+          SizedBox(height: 5),
+          thirdCard(),
+          lastCard(),
+          SizedBox(height: 33),
+          Center(
+              child: Text("금액 숨기기  |  자산 추가",
+                  style: TextStyle(
+                      fontFamily: 'Main',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: toast_background))),
+          SizedBox(height: 78)
+        ]),
+      ),
+    );
   }
 }
 
@@ -296,7 +298,9 @@ class _secondCardState extends State<secondCard> {
                       money: '2,500,000',
                       isbutton: false,
                       buttonName: '송금'),
-                  Divider(thickness: 1),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 5.0),
+                      child: Divider(thickness: 1)),
                   banklist(
                       image: 'point',
                       title: '포인트 머니  2개',
@@ -330,30 +334,29 @@ class _thirdCardState extends State<thirdCard> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 6.0, top: 19),
-              child: Row(
-                children: [Text('소비', style: title2()), Spacer()],
-              ),
+              child: Row(children: [Text('소비', style: title2()), Spacer()]),
             ),
             SizedBox(height: 16),
-            banklist(
-                image: 'card',
-                title: '이번 달 쓴 금액',
-                money: '467,200',
-                isbutton: true,
-                buttonName: '내역'),
             Padding(
-              padding: const EdgeInsets.only(top: 3.0, bottom: 10),
-              child: Divider(
-                thickness: 1,
-              ),
-            ),
-            banklist(
-              image: 'd_9',
-              title: '7월 13일 낼 카드값',
-              money: '1,200',
-              isbutton: false,
-              buttonName: '',
-            ),
+                padding: const EdgeInsets.only(left: 5.0),
+                child: banklist(
+                    image: 'card',
+                    title: '이번 달 쓴 금액',
+                    money: '467,200',
+                    isbutton: true,
+                    buttonName: '내역')),
+            Padding(
+                padding: const EdgeInsets.only(top: 3.0, bottom: 10, left: 5),
+                child: Divider(thickness: 1)),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: banklist(
+                  image: 'd_9',
+                  title: '7월 13일 낼 카드값',
+                  money: '1,200',
+                  isbutton: false,
+                  buttonName: ''),
+            )
           ],
         )));
   }
@@ -376,10 +379,11 @@ class banklist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
+      padding: const EdgeInsets.only(left: 0, right: 0, bottom: 12.0),
       child: Align(
         alignment: Alignment.topLeft,
         child: ListTile(
+          contentPadding: EdgeInsets.only(left: 5.0, right: 0.0),
           trailing: isbutton
               ? SizedBox(
                   height: 37,
@@ -403,10 +407,7 @@ class banklist extends StatelessWidget {
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 1.0),
-            child: Text(
-              '$money 원',
-              style: body1(color: Color(0xff353C49)),
-            ),
+            child: Text('$money 원', style: body1(color: Color(0xff353C49))),
           ),
         ),
       ),
@@ -440,7 +441,7 @@ class lastCard extends StatelessWidget {
                 subtitle1: '카드 혜택',
                 subtitle2: '받기',
                 image: 'purple_card',
-                height: 45,
+                height: 44,
               ),
               _card(
                 title: '최근',
@@ -482,7 +483,7 @@ class lastCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: body3(color: Color(0xff808388))),
-                  Padding(padding: EdgeInsets.only(top: 5)),
+                  Padding(padding: EdgeInsets.only(top: 7)),
                   Text(subtitle1, style: body1()),
                   SizedBox(height: 5),
                   Text(subtitle2, style: body1()),
